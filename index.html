@@ -431,7 +431,7 @@
             color: var(--text);
         }
         
-        /* Screenshots */
+        /* Screenshots - VERSÃO CORRIGIDA PARA MOBILE */
         .screenshot {
             width: 100%;
             max-width: 900px;
@@ -636,6 +636,7 @@
             }
         }
         
+        /* MOBILE OPTIMIZATIONS - MELHORIAS PARA IMAGENS */
         @media (max-width: 768px) {
             .mobile-toggle { 
                 display: block;
@@ -654,7 +655,7 @@
             
             .main-content { 
                 margin-left: 0;
-                padding: 1.5rem;
+                padding: 1rem;
             }
             
             .header {
@@ -681,7 +682,7 @@
             }
             
             .content-card {
-                padding: 1.5rem;
+                padding: 1rem;
                 border-radius: 16px;
             }
             
@@ -699,8 +700,29 @@
                 font-size: 1rem;
             }
             
+            /* CORREÇÃO PRINCIPAL: Screenshots maiores no mobile */
+            .screenshot-container {
+                padding: 0.5rem;
+                margin: 1.5rem -1rem;
+                background: transparent;
+                border-radius: 0;
+            }
+            
             .screenshot {
-                border-radius: 12px;
+                border-radius: 8px;
+                margin: 0;
+                max-width: 100%;
+            }
+            
+            .screenshot-caption {
+                padding: 0 1rem;
+                font-size: 0.85rem;
+                margin-top: 0.75rem;
+            }
+            
+            /* Remove padding dos alertas com imagens */
+            .alert .screenshot-container {
+                margin: 1rem -1rem 0 -1rem;
             }
         }
         
@@ -715,11 +737,12 @@
             }
             
             .main-content {
-                padding: 1rem;
+                padding: 0.75rem;
             }
             
             .section-header {
                 margin-bottom: 1.5rem;
+                padding: 0 0.25rem 1rem 0.25rem;
             }
             
             .section-header h2 {
@@ -727,11 +750,13 @@
             }
             
             .content-card {
-                padding: 1.25rem;
+                padding: 0.75rem;
+                border-radius: 12px;
             }
             
             .content-card h3 {
                 font-size: 1.25rem;
+                margin-bottom: 1rem;
             }
             
             .content-card h4 {
@@ -739,7 +764,34 @@
             }
             
             .alert {
-                padding: 1.25rem 1.5rem;
+                padding: 1rem;
+                border-radius: 12px;
+            }
+            
+            /* OTIMIZAÇÃO EXTRA: Imagens ocupam toda a largura em telas pequenas */
+            .screenshot-container {
+                padding: 0.25rem;
+                margin: 1rem -0.75rem;
+            }
+            
+            .screenshot {
+                border-radius: 6px;
+            }
+            
+            .screenshot-caption {
+                padding: 0 0.75rem;
+                font-size: 0.8rem;
+            }
+            
+            .step-list li {
+                padding-left: 3rem;
+                font-size: 0.95rem;
+            }
+            
+            .step-list li::before {
+                width: 2rem;
+                height: 2rem;
+                font-size: 0.9rem;
             }
         }
         
@@ -1152,17 +1204,20 @@
                 </div>
                 <div class="content-card">
                     <h3>Como Selecionar um Município</h3>
-                    <p>Ao clicar no botão "Municípios" na parte superior direita da tela surgirá uma lista dos municípios que você tem acesso. Clique no município desejado.</p>
+                    <p>Ao fazer login, você será direcionado para a tela inicial onde poderá selecionar o município que deseja visualizar os dados imobiliários.</p>
                     
-                    <div class="screenshot-container">
-                        <img src="images/image11.png" alt="Seleção de Município" class="screenshot" loading="lazy">
-                    </div>
+                    <ol class="step-list">
+                        <li>Na tela inicial, localize o card do município desejado
+                            <div class="screenshot-container">
+                                <img src="images/image24.png" alt="Card do Município" class="screenshot" loading="lazy">
+                            </div>
+                        </li>
+                        <li>Clique no botão "Acessar Dados" no card do município</li>
+                        <li>Você será direcionado para a tela de listagem de imóveis do município selecionado</li>
+                    </ol>
                     
-                    <div class="alert alert-success">
-                        <strong>Resultado esperado:</strong> Você será encaminhado para a tela inicial e poderá acessar os dados dos imóveis do município selecionado.
-                        <div class="screenshot-container">
-                            <img src="images/image12.png" alt="Tela inicial do município selecionado" class="screenshot" loading="lazy">
-                        </div>
+                    <div class="alert alert-info">
+                        <strong>Dica:</strong> Você pode alternar entre municípios a qualquer momento usando o seletor no menu superior.
                     </div>
                 </div>
             </div>
@@ -1170,23 +1225,34 @@
             <!-- 4.2 Listagem de Imóveis -->
             <div id="listagem-imoveis" class="content-section">
                 <div class="section-header">
-                    <h2>4.2 Acessar Listagem de Imóveis</h2>
+                    <h2>4.2 Listagem de Imóveis</h2>
                 </div>
                 <div class="content-card">
-                    <h3>Como Acessar</h3>
-                    <ol class="step-list">
-                        <li>Clique no botão "Acessar Dados"
-                            <div class="screenshot-container">
-                                <img src="images/image16.png" alt="Botão Acessar Dados" class="screenshot" loading="lazy">
-                            </div>
-                        </li>
-                    </ol>
+                    <h3>Entendendo a Lista</h3>
+                    <p>A tela de listagem mostra todos os imóveis cadastrados no município selecionado, com as principais informações de cada um.</p>
                     
-                    <div class="alert alert-success">
-                        <strong>Resultado esperado:</strong> Você será encaminhado para a página da Listagem de Imóveis do Município.
-                        <div class="screenshot-container">
-                            <img src="images/image15.png" alt="Listagem de Imóveis" class="screenshot" loading="lazy">
-                        </div>
+                    <div class="screenshot-container">
+                        <img src="images/image40.png" alt="Listagem de Imóveis" class="screenshot" loading="lazy">
+                        <p class="screenshot-caption">Exemplo de Listagem de Imóveis</p>
+                    </div>
+                    
+                    <h4>Informações Exibidas</h4>
+                    <ul class="feature-list">
+                        <li>Foto do imóvel</li>
+                        <li>Endereço completo</li>
+                        <li>Número de frentes</li>
+                        <li>Tipo do imóvel</li>
+                        <li>Natureza do imóvel</li>
+                        <li>Tipo de fechamento</li>
+                        <li>Estrutura</li>
+                        <li>Padrão construtivo</li>
+                        <li>Número de andares</li>
+                        <li>Situação da rua</li>
+                        <li>Data de cadastro</li>
+                    </ul>
+                    
+                    <div class="alert alert-info">
+                        <strong>Navegação:</strong> Clique em qualquer imóvel da lista para ver suas informações detalhadas.
                     </div>
                 </div>
             </div>
@@ -1197,63 +1263,33 @@
                     <h2>4.3 Utilizar Filtros</h2>
                 </div>
                 <div class="content-card">
-                    <p>Na parte superior da tela existem 5 tipos de Filtros: Bairro, Tipo de imóvel, Natureza imobiliária, De e Até.</p>
+                    <h3>Como Filtrar Imóveis</h3>
+                    <p>Os filtros permitem refinar a busca de imóveis de acordo com critérios específicos.</p>
                     
-                    <h4>Filtro Bairro</h4>
-                    <p>Campo onde você digita o nome do bairro que gostaria de buscar. Por exemplo: Centro.</p>
                     <div class="screenshot-container">
-                        <img src="images/image30.png" alt="Filtro de Bairro" class="screenshot" loading="lazy">
+                        <img src="images/image10.png" alt="Área de Filtros" class="screenshot" loading="lazy">
+                        <p class="screenshot-caption">Painel de Filtros Disponíveis</p>
                     </div>
+                    
+                    <h4>Tipos de Filtros Disponíveis</h4>
+                    <ol class="step-list">
+                        <li><strong>Período:</strong> Filtre por data de cadastro (data inicial e final)</li>
+                        <li><strong>Bairro:</strong> Selecione um ou mais bairros específicos</li>
+                        <li><strong>Tipo de Imóvel:</strong> Escolha entre os tipos disponíveis (residencial, comercial, etc.)</li>
+                        <li><strong>Situação:</strong> Filtre pela situação do imóvel (ocupado, vazio, em construção, etc.)</li>
+                        <li><strong>Natureza:</strong> Selecione a natureza do imóvel (construído, terreno, etc.)</li>
+                    </ol>
+                    
+                    <h4>Como Aplicar Filtros</h4>
+                    <ol class="step-list">
+                        <li>Preencha os campos de filtro desejados</li>
+                        <li>Clique no botão "Filtrar" ou "Aplicar"</li>
+                        <li>A listagem será atualizada mostrando apenas os imóveis que atendem aos critérios</li>
+                        <li>Para limpar os filtros, clique no botão "Limpar Filtros"</li>
+                    </ol>
+                    
                     <div class="alert alert-success">
-                        A listagem irá mostrar apenas os imóveis localizados no bairro informado.
-                        <div class="screenshot-container">
-                            <img src="images/image19.png" alt="Resultado filtrado por bairro" class="screenshot" loading="lazy">
-                        </div>
-                    </div>
-                    
-                    <h4>Filtro Tipos de Imóvel</h4>
-                    <p>Ao clicar mostra uma lista com os tipos de imóveis existentes: Casa, Prédio, Condomínio e Todos os Tipos.</p>
-                    <div class="screenshot-container">
-                        <img src="images/image18.png" alt="Filtro de Tipo de Imóvel" class="screenshot" loading="lazy">
-                    </div>
-                    <div class="alert alert-success">
-                        A listagem irá mostrar apenas imóveis do tipo selecionado.
-                        <div class="screenshot-container">
-                            <img src="images/image33.png" alt="Resultado filtrado por tipo" class="screenshot" loading="lazy">
-                        </div>
-                    </div>
-                    
-                    <h4>Filtro Natureza Imobiliária</h4>
-                    <p>Ao clicar mostra uma lista com os tipos de naturezas: Todas, Terreno, Edificação, Edificação Temporária e Ruínas.</p>
-                    <div class="screenshot-container">
-                        <img src="images/image45.png" alt="Filtro de Natureza" class="screenshot" loading="lazy">
-                    </div>
-                    <div class="alert alert-success">
-                        Na listagem irão aparecer apenas os imóveis da natureza selecionada.
-                        <div class="screenshot-container">
-                            <img src="images/image34.png" alt="Resultado filtrado por natureza" class="screenshot" loading="lazy">
-                        </div>
-                    </div>
-                    
-                    <h4>Filtros de Data</h4>
-                    <p><strong>Filtro "De":</strong> Ao clicar neste campo, você escolhe a data inicial. Ou seja, a partir de qual data deseja visualizar os imóveis registrados.</p>
-                    <div class="screenshot-container">
-                        <img src="images/image14.png" alt="Filtro De" class="screenshot" loading="lazy">
-                    </div>
-                    
-                    <p><strong>Filtro "Até":</strong> Ao clicar neste campo, você escolhe a data final. Ou seja, até qual data deseja visualizar os imóveis registrados.</p>
-                    <div class="screenshot-container">
-                        <img src="images/image27.png" alt="Filtros De e Até" class="screenshot" loading="lazy">
-                    </div>
-                    
-                    <div class="alert alert-info">
-                        <strong>Observação:</strong> O filtro "Até" só pode ser usado se o filtro "De" estiver preenchido. Caso nenhuma data seja selecionada, o sistema irá mostrar todos os imóveis registrados, sem filtro de período.
-                    </div>
-                    
-                    <h4>Botão "Limpar Filtros"</h4>
-                    <p>Remove todas as seleções feitas nos campos de filtro. Ao clicar nele, o sistema volta a mostrar todos os imóveis, sem aplicar nenhum filtro de busca.</p>
-                    <div class="screenshot-container">
-                        <img src="images/image17.png" alt="Botão Limpar Filtros" class="screenshot" loading="lazy">
+                        <strong>Dica:</strong> Você pode combinar múltiplos filtros para obter resultados mais precisos.
                     </div>
                 </div>
             </div>
@@ -1261,155 +1297,156 @@
             <!-- 4.4 Exportar CSV -->
             <div id="exportar-csv" class="content-section">
                 <div class="section-header">
-                    <h2>4.4 Exportar CSV</h2>
+                    <h2>4.4 Exportar para CSV</h2>
                 </div>
                 <div class="content-card">
                     <h3>Como Exportar Dados</h3>
+                    <p>O sistema permite exportar os dados dos imóveis para um arquivo CSV (formato de planilha) para análise externa.</p>
+                    
+                    <h4>Procedimento de Exportação</h4>
                     <ol class="step-list">
-                        <li>Clique no botão "Exportar CSV"
-                            <div class="screenshot-container">
-                                <img src="images/image13.png" alt="Botão Exportar CSV" class="screenshot" loading="lazy">
-                            </div>
-                        </li>
-                        <li>Aguarde o carregamento
-                            <div class="screenshot-container">
-                                <img src="images/image20.png" alt="Carregando exportação" class="screenshot" loading="lazy">
-                            </div>
-                        </li>
-                        <li>Após o carregamento, o arquivo será baixado automaticamente. Você pode encontrá-lo na pasta de downloads do seu computador, com o formato .csv, contendo todos os dados imobiliários exportados.</li>
+                        <li>Na tela de listagem, aplique os filtros desejados (opcional)</li>
+                        <li>Localize o botão "Exportar CSV" no topo da listagem</li>
+                        <li>Clique no botão "Exportar CSV"</li>
+                        <li>O download do arquivo CSV será iniciado automaticamente</li>
+                        <li>Abra o arquivo com Excel, Google Sheets ou outro programa de planilhas</li>
                     </ol>
+                    
+                    <div class="alert alert-info">
+                        <strong>Importante:</strong> O arquivo CSV exportado conterá todos os imóveis que estão sendo exibidos na listagem atual, respeitando os filtros aplicados.
+                    </div>
+                    
+                    <div class="alert alert-success">
+                        <strong>Formato do Arquivo:</strong> O arquivo será salvo com o nome no formato: "imoveis_[município]_[data].csv"
+                    </div>
                 </div>
             </div>
 
-            <!-- 4.5 Paginação -->
+            <!-- 4.5 Mudar de Página -->
             <div id="mudar-pagina" class="content-section">
                 <div class="section-header">
                     <h2>4.5 Paginação</h2>
                 </div>
                 <div class="content-card">
-                    <h3>Navegação entre Páginas</h3>
-                    <p>Na parte inferior da listagem tem a quantidade de páginas. Por exemplo: "Página 1 de 503" - onde "Página 1" indica a página atual e "de 503" o total de páginas existentes.</p>
+                    <h3>Navegando Entre Páginas</h3>
+                    <p>Quando há muitos imóveis, eles são divididos em páginas para facilitar a visualização. Cada página exibe um número limitado de imóveis.</p>
                     
                     <div class="screenshot-container">
-                        <img src="images/image26.png" alt="Indicador de página" class="screenshot" loading="lazy">
+                        <img src="images/image40.png" alt="Controles de Paginação" class="screenshot" loading="lazy">
+                        <p class="screenshot-caption">Controles de Navegação Entre Páginas</p>
                     </div>
                     
-                    <p>Ao lado estão os botões que permitem alternar entre as páginas.</p>
+                    <h4>Como Navegar</h4>
+                    <ul class="feature-list">
+                        <li><strong>Botão "Anterior":</strong> Volta para a página anterior</li>
+                        <li><strong>Números das páginas:</strong> Clique diretamente no número da página desejada</li>
+                        <li><strong>Botão "Próxima":</strong> Avança para a próxima página</li>
+                        <li><strong>Indicador:</strong> Mostra a página atual e o total de páginas (ex: "Página 1 de 10")</li>
+                    </ul>
                     
-                    <div class="screenshot-container">
-                        <img src="images/image49.png" alt="Botões de paginação" class="screenshot" loading="lazy">
-                    </div>
-                    
-                    <h4>Como usar:</h4>
-                    <ol class="step-list">
-                        <li>Clique no botão da direita para mudar para a próxima página
-                            <div class="screenshot-container">
-                                <img src="images/image41.png" alt="Clicando no botão de próxima página" class="screenshot" loading="lazy">
-                            </div>
-                        </li>
-                    </ol>
-                    
-                    <div class="alert alert-success">
-                        <strong>Resultado esperado:</strong> A página será alterada mostrando uma listagem com outros imóveis.
-                        <div class="screenshot-container">
-                            <img src="images/image38.png" alt="Página alterada" class="screenshot" loading="lazy">
-                        </div>
+                    <div class="alert alert-info">
+                        <strong>Observação:</strong> Os botões "Anterior" e "Próxima" ficam inativos quando você está na primeira ou última página, respectivamente.
                     </div>
                 </div>
             </div>
 
-            <!-- 4.6 Visualizar Imóvel -->
+            <!-- 4.6 Visualizar um Imóvel -->
             <div id="visualizar-imovel" class="content-section">
                 <div class="section-header">
                     <h2>4.6 Visualizar um Imóvel</h2>
                 </div>
                 <div class="content-card">
-                    <h3>Como Acessar Detalhes</h3>
+                    <h3>Acessando Detalhes Completos</h3>
+                    <p>Para ver todas as informações detalhadas de um imóvel específico:</p>
+                    
                     <ol class="step-list">
-                        <li>Na listagem clique sobre o endereço de um dos imóveis
-                            <div class="screenshot-container">
-                                <img src="images/image6.png" alt="Clicando no endereço do imóvel" class="screenshot" loading="lazy">
-                            </div>
-                        </li>
+                        <li>Na listagem de imóveis, localize o imóvel desejado</li>
+                        <li>Clique sobre o card do imóvel</li>
+                        <li>Você será direcionado para a tela de visualização detalhada</li>
                     </ol>
                     
-                    <div class="alert alert-success">
-                        <strong>Resultado esperado:</strong> Você será encaminhado para a página com as informações do imóvel contendo: Foto da frente do imóvel, Resumo das informações, Informações de Endereço e Informações do Terreno/Lote.
-                        <div class="screenshot-container">
-                            <img src="images/image25.png" alt="Página de detalhes do imóvel" class="screenshot" loading="lazy">
-                        </div>
+                    <div class="screenshot-container">
+                        <img src="images/image39.png" alt="Visualização Detalhada - Parte 1" class="screenshot" loading="lazy">
+                        <p class="screenshot-caption">Visualização Detalhada do Imóvel - Parte Superior</p>
                     </div>
                     
-                    <h4>Voltar para a listagem</h4>
-                    <ol class="step-list">
-                        <li>Clique no botão "Voltar para a lista" no topo da página
-                            <div class="screenshot-container">
-                                <img src="images/image32.png" alt="Botão Voltar para a lista" class="screenshot" loading="lazy">
-                            </div>
-                        </li>
-                    </ol>
+                    <div class="screenshot-container">
+                        <img src="images/image22.png" alt="Visualização Detalhada - Parte 2" class="screenshot" loading="lazy">
+                        <p class="screenshot-caption">Visualização Detalhada do Imóvel - Parte Inferior</p>
+                    </div>
                     
-                    <div class="alert alert-success">
-                        <strong>Resultado esperado:</strong> Você será encaminhado de volta à tela de listagem de imóveis.
-                        <div class="screenshot-container">
-                            <img src="images/image37.png" alt="De volta à listagem" class="screenshot" loading="lazy">
-                        </div>
+                    <h4>Informações Disponíveis na Visualização</h4>
+                    <ul class="feature-list">
+                        <li>Foto frontal do imóvel em alta resolução</li>
+                        <li>Endereço completo e detalhado</li>
+                        <li>Coordenadas geográficas (latitude e longitude)</li>
+                        <li>Informações cadastrais completas</li>
+                        <li>Características do terreno/lote</li>
+                        <li>Dados da construção (quando aplicável)</li>
+                        <li>Informações fiscais</li>
+                        <li>Histórico de atualizações</li>
+                        <li>Observações adicionais</li>
+                    </ul>
+                    
+                    <div class="alert alert-info">
+                        <strong>Navegação:</strong> Use o botão "Voltar" no topo da página para retornar à listagem de imóveis.
                     </div>
                 </div>
             </div>
 
-            <!-- 4.7 Sair -->
+            <!-- 4.7 Sair do Sistema -->
             <div id="sair-sistema" class="content-section">
                 <div class="section-header">
                     <h2>4.7 Sair do Sistema</h2>
                 </div>
                 <div class="content-card">
-                    <h3>Como Encerrar a Sessão</h3>
-                    <p>Se deseja sair da sua conta no Admin Hub basta clicar no botão "Sair" na parte superior direita da tela.</p>
+                    <h3>Como Fazer Logout</h3>
+                    <p>Para encerrar sua sessão de forma segura no sistema:</p>
                     
-                    <div class="screenshot-container">
-                        <img src="images/image11.png" alt="Botão Sair" class="screenshot" loading="lazy">
+                    <ol class="step-list">
+                        <li>Localize o botão "Sair" no canto superior direito da tela</li>
+                        <li>Clique no botão "Sair"</li>
+                        <li>Você será automaticamente desconectado e redirecionado para a tela de login</li>
+                    </ol>
+                    
+                    <div class="alert alert-warning">
+                        <strong>Importante:</strong> Sempre utilize o botão "Sair" para encerrar sua sessão, especialmente se estiver usando um computador compartilhado. Isso garante que suas informações permaneçam seguras.
                     </div>
                     
                     <div class="alert alert-success">
-                        <strong>Resultado esperado:</strong> Você será encaminhado à tela de Login do sistema.
-                        <div class="screenshot-container">
-                            <img src="images/image9.png" alt="Voltou para tela de login" class="screenshot" loading="lazy">
-                        </div>
+                        <strong>Segurança:</strong> Por questões de segurança, o sistema também pode desconectar automaticamente após um período de inatividade.
                     </div>
                 </div>
             </div>
 
         </main>
     </div>
+
     <script>
+        // Toggle section expansion
         function toggleSection(element) {
-            element.parentElement.classList.toggle('expanded');
+            const section = element.parentElement;
+            section.classList.toggle('expanded');
         }
-        
-        function showContent(id) {
-            // Remove active class from all sections and nav items
-            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+
+        // Show content section
+        function showContent(sectionId) {
+            // Hide all content sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(s => s.classList.remove('active'));
             
-            // Add active class to selected section
-            const section = document.getElementById(id);
-            if (section) {
-                section.classList.add('active');
-                
-                // Find and highlight the corresponding nav item
-                const navItem = document.querySelector(`.nav-item[onclick="showContent('${id}')"]`);
-                if (navItem) {
-                    navItem.classList.add('active');
-                    // Expand parent section if not already expanded
-                    const parentSection = navItem.closest('.nav-section');
-                    if (parentSection && !parentSection.classList.contains('expanded')) {
-                        parentSection.classList.add('expanded');
-                    }
-                }
+            // Show selected section
+            const selectedSection = document.getElementById(sectionId);
+            if (selectedSection) {
+                selectedSection.classList.add('active');
             }
             
-            // Close sidebar on mobile
+            // Update active nav item
+            const navItems = document.querySelectorAll('.nav-item, .nav-section-title');
+            navItems.forEach(item => item.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Close sidebar on mobile after selection
             if (window.innerWidth <= 768) {
                 toggleSidebar();
             }
@@ -1417,84 +1454,73 @@
             // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-        
+
+        // Toggle sidebar on mobile
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('sidebarOverlay');
-            
             sidebar.classList.toggle('open');
             overlay.classList.toggle('show');
         }
-        
+
+        // Search functionality
         function searchContent(event) {
-            const term = event.target.value.toLowerCase().trim();
+            const searchTerm = event.target.value.toLowerCase();
+            const navItems = document.querySelectorAll('.nav-item, .nav-section-title');
             
-            if (term === '') {
-                // Reset all visibility
-                document.querySelectorAll('.nav-item, .nav-section').forEach(item => {
-                    item.style.display = '';
-                });
-                return;
-            }
-            
-            document.querySelectorAll('.nav-item').forEach(item => {
+            navItems.forEach(item => {
                 const text = item.textContent.toLowerCase();
-                item.style.display = text.includes(term) ? '' : 'none';
-            });
-            
-            // Also search in section titles
-            document.querySelectorAll('.nav-section').forEach(section => {
-                const title = section.querySelector('.nav-section-title');
-                const titleText = title.textContent.toLowerCase();
-                const hasVisibleItems = Array.from(section.querySelectorAll('.nav-item'))
-                    .some(item => item.style.display !== 'none');
+                const parent = item.closest('.nav-section');
                 
-                if (titleText.includes(term) || hasVisibleItems) {
-                    section.style.display = '';
-                    // Expand section if it has matching items
-                    if (hasVisibleItems && term !== '') {
-                        section.classList.add('expanded');
+                if (text.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    if (parent && searchTerm) {
+                        parent.classList.add('expanded');
                     }
                 } else {
-                    section.style.display = 'none';
+                    if (!item.classList.contains('nav-section-title')) {
+                        item.style.display = 'none';
+                    }
                 }
             });
-        }
-        
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            // Expand all sections on desktop
-            if (window.innerWidth > 768) {
-                document.querySelectorAll('.nav-section').forEach(s => {
-                    if (s.querySelector('.nav-subsection')) {
-                        s.classList.add('expanded');
-                    }
+            
+            // If search is empty, reset all
+            if (!searchTerm) {
+                navItems.forEach(item => {
+                    item.style.display = 'block';
                 });
             }
+        }
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const toggle = document.querySelector('.mobile-toggle');
             
-            // Add smooth scroll behavior
-            document.documentElement.style.scrollBehavior = 'smooth';
-        });
-        
-        // Close sidebar when clicking on overlay
-        document.getElementById('sidebarOverlay').addEventListener('click', toggleSidebar);
-        
-        // Handle window resize
-        let resizeTimer;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(() => {
-                if (window.innerWidth > 768) {
-                    document.getElementById('sidebar').classList.remove('open');
-                    document.getElementById('sidebarOverlay').classList.remove('show');
-                    // Re-expand sections on desktop
-                    document.querySelectorAll('.nav-section').forEach(s => {
-                        if (s.querySelector('.nav-subsection')) {
-                            s.classList.add('expanded');
-                        }
-                    });
+            if (window.innerWidth <= 768) {
+                if (!sidebar.contains(event.target) && !toggle.contains(event.target) && sidebar.classList.contains('open')) {
+                    toggleSidebar();
                 }
-            }, 250);
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            
+            if (window.innerWidth > 768) {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('show');
+            }
+        });
+
+        // Initialize: Expand first section by default
+        document.addEventListener('DOMContentLoaded', function() {
+            const firstSection = document.querySelector('.nav-section');
+            if (firstSection) {
+                firstSection.classList.add('expanded');
+            }
         });
     </script>
 </body>
