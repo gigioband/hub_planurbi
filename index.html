@@ -4,832 +4,286 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manual HUB PlanUrbi - Barra de São Miguel/AL</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         :root {
-            --primary: #10b981;
-            --primary-dark: #059669;
-            --secondary: #6366f1;
-            --accent: #06b6d4;
-            --text: #1f2937;
-            --text-light: #6b7280;
-            --bg: #f8fafc;
-            --bg-card: #ffffff;
-            --sidebar-width: 300px;
-            --header-height: 75px;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 15px rgba(0,0,0,0.08);
-            --shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            /* Novas Cores PlanUrbi: Verde Escuro/Teal Corporativo */
+            --primary: #2E4E49; /* Verde Escuro da Marca */
+            --secondary: #4A7973; /* Verde Médio/Claro da Marca */
+            --accent: #39625D; /* Cor de Destaque */
+            /* Cores de Fundo e Texto Mantidas */
+            --text: #333;
+            --bg: #F5F5F5;
+            --sidebar-width: 280px;
+            --header-height: 70px;
         }
-        
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #f0fdf4 0%, #ecfeff 50%, #eff6ff 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #F5F5F5 0%, #E8F5E9 100%);
             color: var(--text);
-            line-height: 1.7;
-            min-height: 100vh;
+            line-height: 1.6;
         }
-        
-        /* Header Styles */
         .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            padding: 0 2rem;
+            padding: 1rem 2rem;
             height: var(--header-height);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
         }
-        
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
-        }
-        
         .header h1 {
-            font-family: 'Poppins', sans-serif;
             font-size: 1.5rem;
-            font-weight: 700;
             display: flex;
             align-items: center;
             gap: 1rem;
-            position: relative;
-            z-index: 1;
         }
-        
+        /* Ajuste para responsividade da marca no cabeçalho (Solicitação 3) */
         .logo {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #fff 0%, #f0f9ff 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            color: var(--primary);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            font-size: 1.2rem;
-            transition: var(--transition);
+            max-width: 150px; 
+            max-height: calc(var(--header-height) - 20px); /* Limita altura */
+            width: auto; 
+            height: auto; 
         }
-        
-        .logo:hover {
-            transform: rotate(5deg) scale(1.05);
-        }
-        
-        .header-subtitle {
-            font-size: 0.9rem;
-            font-weight: 400;
-            opacity: 0.95;
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* Mobile Toggle */
-        .mobile-toggle {
-            display: none;
-            background: rgba(255,255,255,0.2);
-            color: white;
-            border: none;
-            padding: 0.75rem;
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 1.5rem;
-            transition: var(--transition);
-            backdrop-filter: blur(10px);
-        }
-        
-        .mobile-toggle:hover {
-            background: rgba(255,255,255,0.3);
-            transform: scale(1.05);
-        }
-        
-        .mobile-toggle:active {
-            transform: scale(0.95);
-        }
-        
-        /* Container */
         .container {
             display: flex;
             margin-top: var(--header-height);
             min-height: calc(100vh - var(--header-height));
         }
-        
-        /* Sidebar Styles */
         .sidebar {
             width: var(--sidebar-width);
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            box-shadow: var(--shadow-md);
+            background: white;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.05);
             position: fixed;
             height: calc(100vh - var(--header-height));
             overflow-y: auto;
-            transition: var(--transition);
+            transition: transform 0.3s ease;
             z-index: 999;
-            border-right: 1px solid rgba(0,0,0,0.05);
         }
-        
-        .sidebar::-webkit-scrollbar {
-            width: 6px;
-        }
-        
-        .sidebar::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        
-        .sidebar::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, var(--primary), var(--accent));
-            border-radius: 10px;
-        }
-        
         .sidebar-header {
-            padding: 2rem 1.5rem;
-            background: linear-gradient(135deg, #ecfdf5 0%, #e0f2fe 100%);
-            border-bottom: 2px solid var(--primary);
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #E8F5E9, #D7EBE8); 
+            border-bottom: 2px solid var(--accent);
         }
-        
         .sidebar-header h2 {
             color: var(--primary);
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
         }
-        
         .search-box {
             width: 100%;
-            padding: 0.9rem 1rem 0.9rem 2.8rem;
-            border: 2px solid #e5e7eb;
-            border-radius: 12px;
+            padding: 0.75rem;
+            border: 2px solid #E0E0E0;
+            border-radius: 8px;
             font-size: 0.9rem;
-            transition: var(--transition);
-            background: white;
-            position: relative;
         }
-        
-        .search-container {
-            position: relative;
-        }
-        
-        .search-container::before {
-            content: '🔍';
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.1rem;
-            pointer-events: none;
-        }
-        
-        .search-box:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
-        }
-        
-        /* Navigation Styles */
         .nav-section {
             margin-bottom: 0.5rem;
-            transition: var(--transition);
         }
-        
         .nav-section-title {
-            padding: 1rem 1.5rem;
+            padding: 0.75rem 1.5rem;
             font-weight: 600;
-            color: var(--text);
+            color: var(--primary);
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            transition: var(--transition);
+            transition: all 0.3s ease;
             border-left: 3px solid transparent;
-            position: relative;
-            overflow: hidden;
         }
-        
-        .nav-section-title::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 0;
-            background: linear-gradient(90deg, rgba(16, 185, 129, 0.1), transparent);
-            transition: var(--transition);
-        }
-        
-        .nav-section-title:hover::before {
-            width: 100%;
-        }
-        
         .nav-section-title:hover {
-            color: var(--primary);
-            border-left-color: var(--primary);
-            transform: translateX(3px);
+            background: #F5F5F5;
+            border-left-color: var(--accent);
         }
-        
         .nav-arrow {
-            transition: var(--transition);
+            transition: transform 0.3s ease;
             font-size: 0.8rem;
-            opacity: 0.6;
         }
-        
         .nav-section.expanded .nav-arrow {
             transform: rotate(90deg);
-            opacity: 1;
-            color: var(--primary);
         }
-        
         .nav-subsection {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: max-height 0.3s ease;
         }
-        
         .nav-section.expanded .nav-subsection {
-            max-height: 2000px;
+            max-height: 1000px;
         }
-        
         .nav-item {
-            padding: 0.75rem 1.5rem 0.75rem 3rem;
-            color: var(--text-light);
+            padding: 0.6rem 1.5rem 0.6rem 3rem;
+            color: #666;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.3s ease;
             font-size: 0.9rem;
-            position: relative;
-            border-left: 3px solid transparent;
         }
-        
-        .nav-item::before {
-            content: '';
-            position: absolute;
-            left: 2.3rem;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 6px;
-            height: 6px;
-            background: var(--text-light);
-            border-radius: 50%;
-            transition: var(--transition);
-            opacity: 0.3;
-        }
-        
         .nav-item:hover {
-            background: linear-gradient(90deg, rgba(16, 185, 129, 0.08), transparent);
+            background: #F5F5F5;
             color: var(--primary);
             padding-left: 3.3rem;
-            border-left-color: var(--primary);
         }
-        
-        .nav-item:hover::before {
-            background: var(--primary);
-            opacity: 1;
-            transform: translateY(-50%) scale(1.3);
-        }
-        
         .nav-item.active {
-            background: linear-gradient(90deg, rgba(16, 185, 129, 0.15), transparent);
+            background: linear-gradient(90deg, rgba(46, 78, 73, 0.1), transparent);
             color: var(--primary);
-            font-weight: 600;
-            border-left-color: var(--primary);
+            font-weight: 500;
         }
-        
-        .nav-item.active::before {
-            background: var(--primary);
-            opacity: 1;
-            width: 8px;
-            height: 8px;
-        }
-        
-        /* Main Content */
         .main-content {
             margin-left: var(--sidebar-width);
             flex: 1;
-            padding: 2.5rem;
-            animation: fadeInUp 0.6s ease;
+            padding: 2rem;
         }
-        
         .content-section {
             display: none;
         }
-        
         .content-section.active {
             display: block;
-            animation: fadeInUp 0.5s ease;
+            animation: fadeIn 0.5s ease;
         }
-        
         .section-header {
-            margin-bottom: 2.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 3px solid;
-            border-image: linear-gradient(90deg, var(--primary), var(--accent)) 1;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--accent);
         }
-        
         .section-header h2 {
             color: var(--primary);
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 0.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
-        
-        .section-header p {
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
-        
-        /* Content Cards */
         .content-card {
-            background: var(--bg-card);
-            border-radius: 20px;
-            padding: 2.5rem;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
             margin-bottom: 2rem;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-            border: 1px solid rgba(0,0,0,0.05);
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
         }
-        
-        .content-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-        }
-        
-        .content-card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-        
         .content-card h3 {
             color: var(--primary);
-            margin-bottom: 1.5rem;
-            font-size: 1.6rem;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
         }
-        
         .content-card h4 {
             color: var(--secondary);
-            margin: 2rem 0 1rem;
-            font-size: 1.2rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            margin: 1.5rem 0 0.75rem;
+            font-size: 1.1rem;
         }
-        
-        .content-card h4::before {
-            content: '';
-            width: 4px;
-            height: 1.2rem;
-            background: linear-gradient(180deg, var(--secondary), var(--accent));
-            border-radius: 2px;
-        }
-        
         .content-card p {
             margin-bottom: 1rem;
-            color: var(--text);
-            line-height: 1.8;
         }
-        
         .content-card ul, .content-card ol {
-            margin: 1.5rem 0 1.5rem 2rem;
+            margin: 1rem 0 1rem 2rem;
         }
-        
         .content-card li {
-            margin-bottom: 0.75rem;
-            color: var(--text);
+            margin-bottom: 0.5rem;
         }
-        
-        /* Screenshots - VERSÃO CORRIGIDA PARA MOBILE */
         .screenshot {
             width: 100%;
-            max-width: 900px;
-            margin: 2rem auto;
+            max-width: 800px;
+            margin: 1.5rem auto;
             display: block;
-            border-radius: 16px;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid rgba(0,0,0,0.1);
-            transition: var(--transition);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border: 1px solid #E0E0E0;
         }
-        
-        .screenshot:hover {
-            transform: scale(1.02);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-        }
-        
         .screenshot-container {
             text-align: center;
-            margin: 2.5rem 0;
-            padding: 1.5rem;
-            background: linear-gradient(135deg, rgba(236, 253, 245, 0.5), rgba(224, 242, 254, 0.5));
-            border-radius: 20px;
+            margin: 2rem 0;
         }
-        
         .screenshot-caption {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
             font-style: italic;
-            font-weight: 500;
         }
-        
-        /* Step List */
         .step-list {
             counter-reset: step-counter;
-            margin: 2rem 0;
+            margin: 1rem 0;
             list-style: none;
         }
-        
         .step-list li {
             counter-increment: step-counter;
-            margin-bottom: 2rem;
-            padding-left: 4rem;
+            margin-bottom: 1.5rem;
+            padding-left: 3rem;
             position: relative;
-            line-height: 1.8;
         }
-        
         .step-list li::before {
             content: counter(step-counter);
             position: absolute;
             left: 0;
             top: 0;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: var(--accent);
             color: white;
-            width: 2.5rem;
-            height: 2.5rem;
+            width: 2rem;
+            height: 2rem;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 700;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            font-weight: bold;
         }
-        
-        /* Feature List */
         .feature-list {
             list-style: none;
             padding: 0;
         }
-        
         .feature-list li {
-            padding: 1rem 0 1rem 2.5rem;
+            padding: 0.75rem 0 0.75rem 2rem;
             position: relative;
-            margin-bottom: 0.75rem;
-            transition: var(--transition);
-            border-radius: 8px;
+            margin-bottom: 0.5rem;
         }
-        
-        .feature-list li:hover {
-            background: rgba(16, 185, 129, 0.05);
-            padding-left: 2.8rem;
-        }
-        
         .feature-list li::before {
             content: "✓";
             position: absolute;
             left: 0;
-            color: var(--primary);
+            color: var(--accent);
             font-weight: bold;
-            font-size: 1.3rem;
-            width: 1.8rem;
-            height: 1.8rem;
-            background: rgba(16, 185, 129, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-size: 1.2rem;
         }
-        
-        /* Alerts */
         .alert {
-            padding: 1.5rem 2rem;
-            border-radius: 16px;
-            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
             border-left: 4px solid;
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
         }
-        
-        .alert::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            opacity: 0.05;
-            background: url('data:image/svg+xml,<svg width="40" height="40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="2" fill="currentColor"/></svg>');
-        }
-        
-        .alert strong {
-            font-weight: 600;
-            display: block;
-            margin-bottom: 0.5rem;
-            font-size: 1.05rem;
-        }
-        
         .alert-success {
-            background: linear-gradient(135deg, rgba(236, 253, 245, 0.8), rgba(209, 250, 229, 0.6));
-            border-color: var(--primary);
-            color: #065f46;
+            background: #E8F5E9; 
+            border-color: var(--accent);
+            color: var(--primary);
         }
-        
         .alert-info {
-            background: linear-gradient(135deg, rgba(224, 242, 254, 0.8), rgba(186, 230, 253, 0.6));
-            border-color: #0ea5e9;
-            color: #0c4a6e;
+            background: #E3F2FD;
+            border-color: #2196F3;
+            color: #1565C0;
         }
-        
         .alert-warning {
-            background: linear-gradient(135deg, rgba(254, 243, 199, 0.8), rgba(253, 230, 138, 0.6));
-            border-color: #f59e0b;
-            color: #78350f;
+            background: #FFF3E0;
+            border-color: #FF9800;
+            color: #E65100;
         }
-        
-        /* Animations */
+        .mobile-toggle {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
         @keyframes fadeIn {
-            from { 
-                opacity: 0; 
-                transform: translateY(10px); 
-            }
-            to { 
-                opacity: 1; 
-                transform: translateY(0); 
-            }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        
-        @keyframes fadeInUp {
-            from { 
-                opacity: 0; 
-                transform: translateY(30px); 
-            }
-            to { 
-                opacity: 1; 
-                transform: translateY(0); 
-            }
-        }
-        
-        @keyframes slideIn {
-            from { 
-                transform: translateX(-100%); 
-            }
-            to { 
-                transform: translateX(0); 
-            }
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 1200px) {
-            :root {
-                --sidebar-width: 280px;
-            }
-            
-            .main-content {
-                padding: 2rem;
-            }
-        }
-        
-        @media (max-width: 992px) {
-            :root {
-                --sidebar-width: 260px;
-            }
-            
-            .header h1 {
-                font-size: 1.3rem;
-            }
-            
-            .section-header h2 {
-                font-size: 2rem;
-            }
-        }
-        
-        /* MOBILE OPTIMIZATIONS - MELHORIAS PARA IMAGENS */
         @media (max-width: 768px) {
-            .mobile-toggle { 
-                display: block;
-            }
-            
-            .sidebar { 
-                transform: translateX(-100%);
-                box-shadow: none;
-            }
-            
-            .sidebar.open { 
-                transform: translateX(0);
-                animation: slideIn 0.3s ease;
-                box-shadow: var(--shadow-lg);
-            }
-            
-            .main-content { 
-                margin-left: 0;
-                padding: 1rem;
-            }
-            
-            .header {
-                padding: 0 1rem;
-            }
-            
-            .header h1 {
-                font-size: 1.1rem;
-                gap: 0.75rem;
-            }
-            
+            .mobile-toggle { display: block; }
+            .sidebar { transform: translateX(-100%); }
+            .sidebar.open { transform: translateX(0); }
+            .main-content { margin-left: 0; padding: 1rem; }
+            /* Ajuste de logo em telas menores */
             .logo {
-                width: 42px;
-                height: 42px;
-                font-size: 1rem;
-            }
-            
-            .header-subtitle {
-                display: none;
-            }
-            
-            .section-header h2 {
-                font-size: 1.8rem;
-            }
-            
-            .content-card {
-                padding: 1rem;
-                border-radius: 16px;
-            }
-            
-            .content-card h3 {
-                font-size: 1.4rem;
-            }
-            
-            .step-list li {
-                padding-left: 3.5rem;
-            }
-            
-            .step-list li::before {
-                width: 2.2rem;
-                height: 2.2rem;
-                font-size: 1rem;
-            }
-            
-            /* CORREÇÃO PRINCIPAL: Screenshots maiores no mobile */
-            .screenshot-container {
-                padding: 0.5rem;
-                margin: 1.5rem -1rem;
-                background: transparent;
-                border-radius: 0;
-            }
-            
-            .screenshot {
-                border-radius: 8px;
-                margin: 0;
-                max-width: 100%;
-            }
-            
-            .screenshot-caption {
-                padding: 0 1rem;
-                font-size: 0.85rem;
-                margin-top: 0.75rem;
-            }
-            
-            /* Remove padding dos alertas com imagens */
-            .alert .screenshot-container {
-                margin: 1rem -1rem 0 -1rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .header h1 {
-                font-size: 1rem;
-            }
-            
-            .logo {
-                width: 38px;
-                height: 38px;
-            }
-            
-            .main-content {
-                padding: 0.75rem;
-            }
-            
-            .section-header {
-                margin-bottom: 1.5rem;
-                padding: 0 0.25rem 1rem 0.25rem;
-            }
-            
-            .section-header h2 {
-                font-size: 1.5rem;
-            }
-            
-            .content-card {
-                padding: 0.75rem;
-                border-radius: 12px;
-            }
-            
-            .content-card h3 {
-                font-size: 1.25rem;
-                margin-bottom: 1rem;
-            }
-            
-            .content-card h4 {
-                font-size: 1.1rem;
-            }
-            
-            .alert {
-                padding: 1rem;
-                border-radius: 12px;
-            }
-            
-            /* OTIMIZAÇÃO EXTRA: Imagens ocupam toda a largura em telas pequenas */
-            .screenshot-container {
-                padding: 0.25rem;
-                margin: 1rem -0.75rem;
-            }
-            
-            .screenshot {
-                border-radius: 6px;
-            }
-            
-            .screenshot-caption {
-                padding: 0 0.75rem;
-                font-size: 0.8rem;
-            }
-            
-            .step-list li {
-                padding-left: 3rem;
-                font-size: 0.95rem;
-            }
-            
-            .step-list li::before {
-                width: 2rem;
-                height: 2rem;
-                font-size: 0.9rem;
-            }
-        }
-        
-        /* Overlay for mobile sidebar */
-        .sidebar-overlay {
-            display: none;
-            position: fixed;
-            top: var(--header-height);
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 998;
-            backdrop-filter: blur(2px);
-        }
-        
-        .sidebar-overlay.show {
-            display: block;
-            animation: fadeIn 0.3s ease;
-        }
-        
-        /* Print Styles */
-        @media print {
-            .sidebar,
-            .header,
-            .mobile-toggle {
-                display: none;
-            }
-            
-            .main-content {
-                margin-left: 0;
-                padding: 0;
-            }
-            
-            .content-card {
-                break-inside: avoid;
-                box-shadow: none;
-                border: 1px solid #ddd;
+                max-width: 120px; 
             }
         }
     </style>
@@ -837,22 +291,17 @@
 <body>
     <header class="header">
         <h1>
-            <button class="mobile-toggle" onclick="toggleSidebar()" aria-label="Toggle menu">☰</button>
-            <div class="logo">HUB</div>
-            <span>Manual do Usuário - HUB PlanUrbi</span>
+            <button class="mobile-toggle" onclick="toggleSidebar()">☰</button>
+            <img src="images/logo-planurbi-DnvUugD1.webp" alt="Logo PlanUrbi Barra de São Miguel" class="logo">
+            Manual do Usuário - AdminHub
         </h1>
-        <div class="header-subtitle">Município de Barra de São Miguel/AL</div>
+        <div>Município de Barra de São Miguel/AL</div>
     </header>
-    
-    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
-    
     <div class="container">
         <nav class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <h2>📚 Navegação</h2>
-                <div class="search-container">
-                    <input type="text" class="search-box" placeholder="Buscar no manual..." onkeyup="searchContent(event)" aria-label="Buscar conteúdo">
-                </div>
+                <input type="text" class="search-box" placeholder="Buscar no manual..." onkeyup="searchContent(event)">
             </div>
             <div class="nav-menu">
                 <div class="nav-section">
@@ -902,7 +351,6 @@
             </div>
         </nav>
         <main class="main-content">
-            <!-- Welcome Section -->
             <div id="welcome" class="content-section active">
                 <div class="section-header">
                     <h2>Bem-vindo ao Manual do HUB PlanUrbi</h2>
@@ -920,7 +368,6 @@
                 </div>
             </div>
 
-            <!-- 1. Apresentação -->
             <div id="apresentacao" class="content-section">
                 <div class="section-header">
                     <h2>1. Apresentação</h2>
@@ -928,17 +375,20 @@
                 <div class="content-card">
                     <h3>O que é o AdminHub PlanUrbi</h3>
                     <p>É o Sistema de Gestão de Dados Imobiliários que permite visualizar os dados dos imóveis coletados em campo no município da Barra de São Miguel pelo programa PlanUrbi de mapeamento inteligente.</p>
+                    
+                    <h3>Descrição</h3>
+                    <p>O AdminHub PlanUrbi é a plataforma que centraliza e disponibiliza todas as informações georreferenciadas coletadas pelo Mapeamento Cadastral Georreferenciado (MCG) do município da Barra de São Miguel. 
+                    A plataforma integra dados alfanuméricos e espaciais, permitindo a visualização detalhada de imóveis, consulta de atributos, filtros avançados, exportações e análise territorial — apoiando atividades de planejamento, gestão urbana, fiscalização e modernização tributária.</p>
                 </div>
             </div>
 
-            <!-- 2.1.1 Tela de Login -->
             <div id="tela-login" class="content-section">
                 <div class="section-header">
                     <h2>2.1.1 Tela de Login</h2>
                 </div>
                 <div class="content-card">
                     <div class="screenshot-container">
-                        <img src="images/image2.png" alt="Tela de Login" class="screenshot" loading="lazy">
+                        <img src="images/image2.png" alt="Tela de Login" class="screenshot">
                         <p class="screenshot-caption">Tela de Login do Sistema</p>
                     </div>
                     
@@ -949,14 +399,13 @@
                 </div>
             </div>
 
-            <!-- 2.1.2 Tela Inicial -->
             <div id="tela-inicial" class="content-section">
                 <div class="section-header">
                     <h2>2.1.2 Tela Inicial</h2>
                 </div>
                 <div class="content-card">
                     <div class="screenshot-container">
-                        <img src="images/image24.png" alt="Tela Inicial" class="screenshot" loading="lazy">
+                        <img src="images/image24.png" alt="Tela Inicial" class="screenshot">
                         <p class="screenshot-caption">Tela Inicial com Card do Município</p>
                     </div>
                     
@@ -976,19 +425,18 @@
                 </div>
             </div>
 
-            <!-- 2.1.3 Tela de Listagem -->
             <div id="tela-listagem" class="content-section">
                 <div class="section-header">
                     <h2>2.1.3 Tela de Listagem</h2>
                 </div>
                 <div class="content-card">
                     <div class="screenshot-container">
-                        <img src="images/image10.png" alt="Área de Filtros" class="screenshot" loading="lazy">
+                        <img src="images/image10.png" alt="Área de Filtros" class="screenshot">
                         <p class="screenshot-caption">Área de Filtros da Listagem</p>
                     </div>
                     
                     <div class="screenshot-container">
-                        <img src="images/image40.png" alt="Lista de Imóveis" class="screenshot" loading="lazy">
+                        <img src="images/image40.png" alt="Lista de Imóveis" class="screenshot">
                         <p class="screenshot-caption">Lista de Imóveis e Paginação</p>
                     </div>
                     
@@ -1005,19 +453,18 @@
                 </div>
             </div>
 
-            <!-- 2.1.4 Tela de Visualização -->
             <div id="tela-visualizacao" class="content-section">
                 <div class="section-header">
                     <h2>2.1.4 Tela de Visualização de Imóvel</h2>
                 </div>
                 <div class="content-card">
                     <div class="screenshot-container">
-                        <img src="images/image39.png" alt="Visualização do Imóvel - Parte Superior" class="screenshot" loading="lazy">
+                        <img src="images/image39.png" alt="Visualização do Imóvel - Parte Superior" class="screenshot">
                         <p class="screenshot-caption">Foto e Resumo das Informações</p>
                     </div>
                     
                     <div class="screenshot-container">
-                        <img src="images/image22.png" alt="Visualização do Imóvel - Parte Inferior" class="screenshot" loading="lazy">
+                        <img src="images/image22.png" alt="Visualização do Imóvel - Parte Inferior" class="screenshot">
                         <p class="screenshot-caption">Informações de Endereço e Terreno</p>
                     </div>
                     
@@ -1045,7 +492,6 @@
                 </div>
             </div>
 
-            <!-- 2.2 Estado dos Botões -->
             <div id="estado-botoes" class="content-section">
                 <div class="section-header">
                     <h2>2.2 Estado dos Botões</h2>
@@ -1056,20 +502,19 @@
                     <div class="alert alert-success">
                         <strong>Botão Ativo:</strong> indica que a ação pode ser realizada. O botão está visível e pode ser clicado.
                         <div class="screenshot-container">
-                            <img src="images/image21.png" alt="Botão Ativo" class="screenshot" style="max-width: 400px;" loading="lazy">
+                            <img src="images/image21.png" alt="Botão Ativo" class="screenshot" style="max-width: 400px;">
                         </div>
                     </div>
                     
                     <div class="alert alert-info">
                         <strong>Botão Inativo:</strong> indica que a ação não está disponível naquele momento. O botão aparece com cor mais clara e não pode ser clicado.
                         <div class="screenshot-container">
-                            <img src="images/image35.png" alt="Botão Inativo" class="screenshot" style="max-width: 400px;" loading="lazy">
+                            <img src="images/image35.png" alt="Botão Inativo" class="screenshot" style="max-width: 400px;">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 3.1 Como Fazer Login -->
             <div id="como-login" class="content-section">
                 <div class="section-header">
                     <h2>3.1 Como Fazer Login</h2>
@@ -1080,17 +525,17 @@
                         <li>Acesse o link <strong>https://hub.planurbi.com.br/</strong></li>
                         <li>No campo CPF, digite seu número de CPF (somente números)
                             <div class="screenshot-container">
-                                <img src="images/image23.png" alt="Campo CPF" class="screenshot" loading="lazy">
+                                <img src="images/image23.png" alt="Campo CPF" class="screenshot">
                             </div>
                         </li>
                         <li>No campo Senha, digite sua senha
                             <div class="screenshot-container">
-                                <img src="images/image29.png" alt="Campo Senha" class="screenshot" loading="lazy">
+                                <img src="images/image29.png" alt="Campo Senha" class="screenshot">
                             </div>
                         </li>
                         <li>Clique no botão verde "Entrar"
                             <div class="screenshot-container">
-                                <img src="images/image48.png" alt="Botão Entrar" class="screenshot" loading="lazy">
+                                <img src="images/image48.png" alt="Botão Entrar" class="screenshot">
                             </div>
                         </li>
                     </ol>
@@ -1099,20 +544,19 @@
                     <div class="alert alert-success">
                         <strong>Caso de sucesso:</strong> Você será direcionado para a página inicial do sistema.
                         <div class="screenshot-container">
-                            <img src="images/image12.png" alt="Login bem-sucedido" class="screenshot" loading="lazy">
+                            <img src="images/image12.png" alt="Login bem-sucedido" class="screenshot">
                         </div>
                     </div>
                     
                     <div class="alert alert-warning">
                         <strong>Caso de erro:</strong> O sistema irá exibir uma mensagem informando que o CPF ou a senha estão incorretos. Se o erro continuar, utilize a opção "Esqueci minha senha" ou entre em contato com o suporte.
                         <div class="screenshot-container">
-                            <img src="images/image7.png" alt="Erro no login" class="screenshot" loading="lazy">
+                            <img src="images/image7.png" alt="Erro no login" class="screenshot">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 3.2 Criar Nova Senha -->
             <div id="criar-senha" class="content-section">
                 <div class="section-header">
                     <h2>3.2 Criar Nova Senha</h2>
@@ -1125,12 +569,12 @@
                         <li>Insira sua "Nova senha" no primeiro campo, ela deve conter no mínimo 4 caracteres</li>
                         <li>Repita a mesma senha no campo "Confirmar Nova Senha"
                             <div class="screenshot-container">
-                                <img src="images/image50.png" alt="Campos de criar nova senha" class="screenshot" loading="lazy">
+                                <img src="images/image50.png" alt="Campos de criar nova senha" class="screenshot">
                             </div>
                         </li>
                         <li>Clique no botão "Salvar Nova Senha"
                             <div class="screenshot-container">
-                                <img src="images/image43.png" alt="Botão Salvar Nova Senha" class="screenshot" loading="lazy">
+                                <img src="images/image43.png" alt="Botão Salvar Nova Senha" class="screenshot">
                             </div>
                         </li>
                     </ol>
@@ -1139,23 +583,22 @@
                     <div class="alert alert-success">
                         <strong>Caso de sucesso:</strong> Surgirá uma mensagem de sucesso e você será direcionado para a página inicial do sistema.
                         <div class="screenshot-container">
-                            <img src="images/image3.png" alt="Senha criada com sucesso" class="screenshot" loading="lazy">
+                            <img src="images/image3.png" alt="Senha criada com sucesso" class="screenshot">
                         </div>
                     </div>
                     
                     <div class="alert alert-warning">
                         <strong>Caso de erro:</strong> O sistema irá exibir uma mensagem informando que as senhas não coincidem ou que os campos estão vazios. Verifique se digitou corretamente e tente novamente.
                         <div class="screenshot-container">
-                            <img src="images/image31.png" alt="Erro - senhas não coincidem" class="screenshot" loading="lazy">
+                            <img src="images/image31.png" alt="Erro - senhas não coincidem" class="screenshot">
                         </div>
                         <div class="screenshot-container">
-                            <img src="images/image28.png" alt="Erro - campos vazios" class="screenshot" loading="lazy">
+                            <img src="images/image28.png" alt="Erro - campos vazios" class="screenshot">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 3.3 Recuperar Senha -->
             <div id="recuperar-senha" class="content-section">
                 <div class="section-header">
                     <h2>3.3 Como Recuperar a Senha</h2>
@@ -1165,17 +608,17 @@
                     <ol class="step-list">
                         <li>Clique em "Esqueceu a senha?"
                             <div class="screenshot-container">
-                                <img src="images/image1.png" alt="Link Esqueceu a senha" class="screenshot" loading="lazy">
+                                <img src="images/image1.png" alt="Link Esqueceu a senha" class="screenshot">
                             </div>
                         </li>
                         <li>Digite seu CPF
                             <div class="screenshot-container">
-                                <img src="images/image8.png" alt="Tela de recuperação - digitar CPF" class="screenshot" loading="lazy">
+                                <img src="images/image8.png" alt="Tela de recuperação - digitar CPF" class="screenshot">
                             </div>
                         </li>
                         <li>Clique em "Redefinir Senha"
                             <div class="screenshot-container">
-                                <img src="images/image36.png" alt="Botão Redefinir Senha" class="screenshot" loading="lazy">
+                                <img src="images/image36.png" alt="Botão Redefinir Senha" class="screenshot">
                             </div>
                         </li>
                     </ol>
@@ -1184,342 +627,313 @@
                     <div class="alert alert-success">
                         <strong>Caso de sucesso:</strong> Surgirá uma mensagem de sucesso. Clique em "Voltar para o Login" e faça login com seu CPF e a Nova senha.
                         <div class="screenshot-container">
-                            <img src="images/image46.png" alt="Senha redefinida com sucesso" class="screenshot" loading="lazy">
+                            <img src="images/image46.png" alt="Senha redefinida com sucesso" class="screenshot">
                         </div>
                     </div>
                     
                     <div class="alert alert-warning">
                         <strong>Caso de erro:</strong> O sistema irá exibir uma mensagem informando que o CPF é inválido. Nesse caso, verifique se digitou corretamente e tente novamente.
                         <div class="screenshot-container">
-                            <img src="images/image47.png" alt="Erro - CPF inválido" class="screenshot" loading="lazy">
+                            <img src="images/image47.png" alt="Erro - CPF inválido" class="screenshot">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 4.1 Acessar Município -->
             <div id="acessar-municipio" class="content-section">
                 <div class="section-header">
                     <h2>4.1 Acessar Município</h2>
                 </div>
                 <div class="content-card">
                     <h3>Como Selecionar um Município</h3>
-                    <p>Ao fazer login, você será direcionado para a tela inicial onde poderá selecionar o município que deseja visualizar os dados imobiliários.</p>
-                    
-                    <ol class="step-list">
-                        <li>Na tela inicial, localize o card do município desejado
-                            <div class="screenshot-container">
-                                <img src="images/image24.png" alt="Card do Município" class="screenshot" loading="lazy">
-                            </div>
-                        </li>
-                        <li>Clique no botão "Acessar Dados" no card do município</li>
-                        <li>Você será direcionado para a tela de listagem de imóveis do município selecionado</li>
-                    </ol>
-                    
-                    <div class="alert alert-info">
-                        <strong>Dica:</strong> Você pode alternar entre municípios a qualquer momento usando o seletor no menu superior.
-                    </div>
-                </div>
-            </div>
-
-            <!-- 4.2 Listagem de Imóveis -->
-            <div id="listagem-imoveis" class="content-section">
-                <div class="section-header">
-                    <h2>4.2 Listagem de Imóveis</h2>
-                </div>
-                <div class="content-card">
-                    <h3>Entendendo a Lista</h3>
-                    <p>A tela de listagem mostra todos os imóveis cadastrados no município selecionado, com as principais informações de cada um.</p>
+                    <p>Ao clicar no botão "Municípios" na parte superior direita da tela surgirá uma lista dos municípios que você tem acesso. Clique no município desejado.</p>
                     
                     <div class="screenshot-container">
-                        <img src="images/image40.png" alt="Listagem de Imóveis" class="screenshot" loading="lazy">
-                        <p class="screenshot-caption">Exemplo de Listagem de Imóveis</p>
+                        <img src="images/image11.png" alt="Seleção de Município" class="screenshot">
                     </div>
                     
-                    <h4>Informações Exibidas</h4>
-                    <ul class="feature-list">
-                        <li>Foto do imóvel</li>
-                        <li>Endereço completo</li>
-                        <li>Número de frentes</li>
-                        <li>Tipo do imóvel</li>
-                        <li>Natureza do imóvel</li>
-                        <li>Tipo de fechamento</li>
-                        <li>Estrutura</li>
-                        <li>Padrão construtivo</li>
-                        <li>Número de andares</li>
-                        <li>Situação da rua</li>
-                        <li>Data de cadastro</li>
-                    </ul>
-                    
-                    <div class="alert alert-info">
-                        <strong>Navegação:</strong> Clique em qualquer imóvel da lista para ver suas informações detalhadas.
+                    <div class="alert alert-success">
+                        <strong>Resultado esperado:</strong> Você será encaminhado para a tela inicial e poderá acessar os dados dos imóveis do município selecionado.
+                        <div class="screenshot-container">
+                            <img src="images/image12.png" alt="Tela inicial do município selecionado" class="screenshot">
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 4.3 Utilizar Filtros -->
+            <div id="listagem-imoveis" class="content-section">
+                <div class="section-header">
+                    <h2>4.2 Acessar Listagem de Imóveis</h2>
+                </div>
+                <div class="content-card">
+                    <h3>Como Acessar</h3>
+                    <ol class="step-list">
+                        <li>Clique no botão "Acessar Dados"
+                            <div class="screenshot-container">
+                                <img src="images/image16.png" alt="Botão Acessar Dados" class="screenshot">
+                            </div>
+                        </li>
+                    </ol>
+                    
+                    <div class="alert alert-success">
+                        <strong>Resultado esperado:</strong> Você será encaminhado para a página da Listagem de Imóveis do Município.
+                        <div class="screenshot-container">
+                            <img src="images/image15.png" alt="Listagem de Imóveis" class="screenshot">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div id="utilizar-filtros" class="content-section">
                 <div class="section-header">
                     <h2>4.3 Utilizar Filtros</h2>
                 </div>
                 <div class="content-card">
-                    <h3>Como Filtrar Imóveis</h3>
-                    <p>Os filtros permitem refinar a busca de imóveis de acordo com critérios específicos.</p>
+                    <p>Na parte superior da tela existem 5 tipos de Filtros: Bairro, Tipo de imóvel, Natureza imobiliária, De e Até.</p>
                     
+                    <h4>Filtro Bairro</h4>
+                    <p>Campo onde você digita o nome do bairro que gostaria de buscar. Por exemplo: Centro.</p>
                     <div class="screenshot-container">
-                        <img src="images/image10.png" alt="Área de Filtros" class="screenshot" loading="lazy">
-                        <p class="screenshot-caption">Painel de Filtros Disponíveis</p>
+                        <img src="images/image30.png" alt="Filtro de Bairro" class="screenshot">
+                    </div>
+                    <div class="alert alert-success">
+                        A listagem irá mostrar apenas os imóveis localizados no bairro informado.
+                        <div class="screenshot-container">
+                            <img src="images/image19.png" alt="Resultado filtrado por bairro" class="screenshot">
+                        </div>
                     </div>
                     
-                    <h4>Tipos de Filtros Disponíveis</h4>
-                    <ol class="step-list">
-                        <li><strong>Período:</strong> Filtre por data de cadastro (data inicial e final)</li>
-                        <li><strong>Bairro:</strong> Selecione um ou mais bairros específicos</li>
-                        <li><strong>Tipo de Imóvel:</strong> Escolha entre os tipos disponíveis (residencial, comercial, etc.)</li>
-                        <li><strong>Situação:</strong> Filtre pela situação do imóvel (ocupado, vazio, em construção, etc.)</li>
-                        <li><strong>Natureza:</strong> Selecione a natureza do imóvel (construído, terreno, etc.)</li>
-                    </ol>
-                    
-                    <h4>Como Aplicar Filtros</h4>
-                    <ol class="step-list">
-                        <li>Preencha os campos de filtro desejados</li>
-                        <li>Clique no botão "Filtrar" ou "Aplicar"</li>
-                        <li>A listagem será atualizada mostrando apenas os imóveis que atendem aos critérios</li>
-                        <li>Para limpar os filtros, clique no botão "Limpar Filtros"</li>
-                    </ol>
-                    
+                    <h4>Filtro Tipos de Imóvel</h4>
+                    <p>Ao clicar mostra uma lista com os tipos de imóveis existentes: Casa, Prédio, Condomínio e Todos os Tipos.</p>
+                    <div class="screenshot-container">
+                        <img src="images/image18.png" alt="Filtro de Tipo de Imóvel" class="screenshot">
+                    </div>
                     <div class="alert alert-success">
-                        <strong>Dica:</strong> Você pode combinar múltiplos filtros para obter resultados mais precisos.
+                        A listagem irá mostrar apenas imóveis do tipo selecionado.
+                        <div class="screenshot-container">
+                            <img src="images/image33.png" alt="Resultado filtrado por tipo" class="screenshot">
+                        </div>
+                    </div>
+                    
+                    <h4>Filtro Natureza Imobiliária</h4>
+                    <p>Ao clicar mostra uma lista com os tipos de naturezas: Todas, Terreno, Edificação, Edificação Temporária e Ruínas.</p>
+                    <div class="screenshot-container">
+                        <img src="images/image45.png" alt="Filtro de Natureza" class="screenshot">
+                    </div>
+                    <div class="alert alert-success">
+                        Na listagem irão aparecer apenas os imóveis da natureza selecionada.
+                        <div class="screenshot-container">
+                            <img src="images/image34.png" alt="Resultado filtrado por natureza" class="screenshot">
+                        </div>
+                    </div>
+                    
+                    <h4>Filtros de Data</h4>
+                    <p><strong>Filtro "De":</strong> Ao clicar neste campo, você escolhe a data inicial. Ou seja, a partir de qual data deseja visualizar os imóveis registrados.</p>
+                    <div class="screenshot-container">
+                        <img src="images/image14.png" alt="Filtro De" class="screenshot">
+                    </div>
+                    
+                    <p><strong>Filtro "Até":</strong> Ao clicar neste campo, você escolhe a data final. Ou seja, até qual data deseja visualizar os imóveis registrados.</p>
+                    <div class="screenshot-container">
+                        <img src="images/image27.png" alt="Filtros De e Até" class="screenshot">
+                    </div>
+                    
+                    <div class="alert alert-info">
+                        <strong>Observação:</strong> O filtro "Até" só pode ser usado se o filtro "De" estiver preenchido. Caso nenhuma data seja selecionada, o sistema irá mostrar todos os imóveis registrados, sem filtro de período.
+                    </div>
+                    
+                    <h4>Botão "Limpar Filtros"</h4>
+                    <p>Remove todas as seleções feitas nos campos de filtro. Ao clicar nele, o sistema volta a mostrar todos os imóveis, sem aplicar nenhum filtro de busca.</p>
+                    <div class="screenshot-container">
+                        <img src="images/image17.png" alt="Botão Limpar Filtros" class="screenshot">
                     </div>
                 </div>
             </div>
 
-            <!-- 4.4 Exportar CSV -->
             <div id="exportar-csv" class="content-section">
                 <div class="section-header">
-                    <h2>4.4 Exportar para CSV</h2>
+                    <h2>4.4 Exportar CSV</h2>
                 </div>
                 <div class="content-card">
                     <h3>Como Exportar Dados</h3>
-                    <p>O sistema permite exportar os dados dos imóveis para um arquivo CSV (formato de planilha) para análise externa.</p>
-                    
-                    <h4>Procedimento de Exportação</h4>
                     <ol class="step-list">
-                        <li>Na tela de listagem, aplique os filtros desejados (opcional)</li>
-                        <li>Localize o botão "Exportar CSV" no topo da listagem</li>
-                        <li>Clique no botão "Exportar CSV"</li>
-                        <li>O download do arquivo CSV será iniciado automaticamente</li>
-                        <li>Abra o arquivo com Excel, Google Sheets ou outro programa de planilhas</li>
+                        <li>Clique no botão "Exportar CSV"
+                            <div class="screenshot-container">
+                                <img src="images/image13.png" alt="Botão Exportar CSV" class="screenshot">
+                            </div>
+                        </li>
+                        <li>Aguarde o carregamento
+                            <div class="screenshot-container">
+                                <img src="images/image20.png" alt="Carregando exportação" class="screenshot">
+                            </div>
+                        </li>
+                        <li>Após o carregamento, o arquivo será baixado automaticamente. Você pode encontrá-lo na pasta de downloads do seu computador, com o formato .csv, contendo todos os dados imobiliários exportados.</li>
                     </ol>
-                    
-                    <div class="alert alert-info">
-                        <strong>Importante:</strong> O arquivo CSV exportado conterá todos os imóveis que estão sendo exibidos na listagem atual, respeitando os filtros aplicados.
-                    </div>
-                    
-                    <div class="alert alert-success">
-                        <strong>Formato do Arquivo:</strong> O arquivo será salvo com o nome no formato: "imoveis_[município]_[data].csv"
-                    </div>
                 </div>
             </div>
 
-            <!-- 4.5 Mudar de Página -->
             <div id="mudar-pagina" class="content-section">
                 <div class="section-header">
                     <h2>4.5 Paginação</h2>
                 </div>
                 <div class="content-card">
-                    <h3>Navegando Entre Páginas</h3>
-                    <p>Quando há muitos imóveis, eles são divididos em páginas para facilitar a visualização. Cada página exibe um número limitado de imóveis.</p>
+                    <h3>Navegação entre Páginas</h3>
+                    <p>Na parte inferior da listagem tem a quantidade de páginas. Por exemplo: "Página 1 de 503" - onde "Página 1" indica a página atual e "de 503" o total de páginas existentes.</p>
                     
                     <div class="screenshot-container">
-                        <img src="images/image40.png" alt="Controles de Paginação" class="screenshot" loading="lazy">
-                        <p class="screenshot-caption">Controles de Navegação Entre Páginas</p>
+                        <img src="images/image26.png" alt="Indicador de página" class="screenshot">
                     </div>
                     
-                    <h4>Como Navegar</h4>
-                    <ul class="feature-list">
-                        <li><strong>Botão "Anterior":</strong> Volta para a página anterior</li>
-                        <li><strong>Números das páginas:</strong> Clique diretamente no número da página desejada</li>
-                        <li><strong>Botão "Próxima":</strong> Avança para a próxima página</li>
-                        <li><strong>Indicador:</strong> Mostra a página atual e o total de páginas (ex: "Página 1 de 10")</li>
-                    </ul>
+                    <p>Ao lado estão os botões que permitem alternar entre as páginas.</p>
                     
-                    <div class="alert alert-info">
-                        <strong>Observação:</strong> Os botões "Anterior" e "Próxima" ficam inativos quando você está na primeira ou última página, respectivamente.
+                    <div class="screenshot-container">
+                        <img src="images/image49.png" alt="Botões de paginação" class="screenshot">
+                    </div>
+                    
+                    <h4>Como usar:</h4>
+                    <ol class="step-list">
+                        <li>Clique no botão da direita para mudar para a próxima página
+                            <div class="screenshot-container">
+                                <img src="images/image41.png" alt="Clicando no botão de próxima página" class="screenshot">
+                            </div>
+                        </li>
+                    </ol>
+                    
+                    <div class="alert alert-success">
+                        <strong>Resultado esperado:</strong> A página será alterada mostrando uma listagem com outros imóveis.
+                        <div class="screenshot-container">
+                            <img src="images/image38.png" alt="Página alterada" class="screenshot">
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 4.6 Visualizar um Imóvel -->
             <div id="visualizar-imovel" class="content-section">
                 <div class="section-header">
                     <h2>4.6 Visualizar um Imóvel</h2>
                 </div>
                 <div class="content-card">
-                    <h3>Acessando Detalhes Completos</h3>
-                    <p>Para ver todas as informações detalhadas de um imóvel específico:</p>
-                    
+                    <h3>Como Acessar Detalhes</h3>
                     <ol class="step-list">
-                        <li>Na listagem de imóveis, localize o imóvel desejado</li>
-                        <li>Clique sobre o card do imóvel</li>
-                        <li>Você será direcionado para a tela de visualização detalhada</li>
+                        <li>Na listagem clique sobre o endereço de um dos imóveis
+                            <div class="screenshot-container">
+                                <img src="images/image6.png" alt="Clicando no endereço do imóvel" class="screenshot">
+                            </div>
+                        </li>
                     </ol>
                     
-                    <div class="screenshot-container">
-                        <img src="images/image39.png" alt="Visualização Detalhada - Parte 1" class="screenshot" loading="lazy">
-                        <p class="screenshot-caption">Visualização Detalhada do Imóvel - Parte Superior</p>
+                    <div class="alert alert-success">
+                        <strong>Resultado esperado:</strong> Você será encaminhado para a página com as informações do imóvel contendo: Foto da frente do imóvel, Resumo das informações, Informações de Endereço e Informações do Terreno/Lote.
+                        <div class="screenshot-container">
+                            <img src="images/image25.png" alt="Página de detalhes do imóvel" class="screenshot">
+                        </div>
                     </div>
                     
-                    <div class="screenshot-container">
-                        <img src="images/image22.png" alt="Visualização Detalhada - Parte 2" class="screenshot" loading="lazy">
-                        <p class="screenshot-caption">Visualização Detalhada do Imóvel - Parte Inferior</p>
-                    </div>
+                    <h4>Voltar para a listagem</h4>
+                    <ol class="step-list">
+                        <li>Clique no botão "Voltar para a lista" no topo da página
+                            <div class="screenshot-container">
+                                <img src="images/image32.png" alt="Botão Voltar para a lista" class="screenshot">
+                            </div>
+                        </li>
+                    </ol>
                     
-                    <h4>Informações Disponíveis na Visualização</h4>
-                    <ul class="feature-list">
-                        <li>Foto frontal do imóvel em alta resolução</li>
-                        <li>Endereço completo e detalhado</li>
-                        <li>Coordenadas geográficas (latitude e longitude)</li>
-                        <li>Informações cadastrais completas</li>
-                        <li>Características do terreno/lote</li>
-                        <li>Dados da construção (quando aplicável)</li>
-                        <li>Informações fiscais</li>
-                        <li>Histórico de atualizações</li>
-                        <li>Observações adicionais</li>
-                    </ul>
-                    
-                    <div class="alert alert-info">
-                        <strong>Navegação:</strong> Use o botão "Voltar" no topo da página para retornar à listagem de imóveis.
+                    <div class="alert alert-success">
+                        <strong>Resultado esperado:</strong> Você será encaminhado de volta à tela de listagem de imóveis.
+                        <div class="screenshot-container">
+                            <img src="images/image37.png" alt="De volta à listagem" class="screenshot">
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 4.7 Sair do Sistema -->
             <div id="sair-sistema" class="content-section">
                 <div class="section-header">
                     <h2>4.7 Sair do Sistema</h2>
                 </div>
                 <div class="content-card">
-                    <h3>Como Fazer Logout</h3>
-                    <p>Para encerrar sua sessão de forma segura no sistema:</p>
+                    <h3>Como Encerrar a Sessão</h3>
+                    <p>Se deseja sair da sua conta no Admin Hub basta clicar no botão "Sair" na parte superior direita da tela.</p>
                     
-                    <ol class="step-list">
-                        <li>Localize o botão "Sair" no canto superior direito da tela</li>
-                        <li>Clique no botão "Sair"</li>
-                        <li>Você será automaticamente desconectado e redirecionado para a tela de login</li>
-                    </ol>
-                    
-                    <div class="alert alert-warning">
-                        <strong>Importante:</strong> Sempre utilize o botão "Sair" para encerrar sua sessão, especialmente se estiver usando um computador compartilhado. Isso garante que suas informações permaneçam seguras.
+                    <div class="screenshot-container">
+                        <img src="images/image11.png" alt="Botão Sair" class="screenshot">
                     </div>
                     
                     <div class="alert alert-success">
-                        <strong>Segurança:</strong> Por questões de segurança, o sistema também pode desconectar automaticamente após um período de inatividade.
+                        <strong>Resultado esperado:</strong> Você será encaminhado à tela de Login do sistema.
+                        <div class="screenshot-container">
+                            <img src="images/image9.png" alt="Voltou para tela de login" class="screenshot">
+                        </div>
                     </div>
                 </div>
             </div>
 
         </main>
     </div>
-
     <script>
-        // Toggle section expansion
         function toggleSection(element) {
-            const section = element.parentElement;
-            section.classList.toggle('expanded');
+            element.parentElement.classList.toggle('expanded');
         }
-
-        // Show content section
-        function showContent(sectionId) {
-            // Hide all content sections
-            const sections = document.querySelectorAll('.content-section');
-            sections.forEach(s => s.classList.remove('active'));
+        
+        function showContent(id) {
+            // Remove active class from all sections and nav items
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
             
-            // Show selected section
-            const selectedSection = document.getElementById(sectionId);
-            if (selectedSection) {
-                selectedSection.classList.add('active');
+            // Add active class to selected section
+            const section = document.getElementById(id);
+            if (section) {
+                section.classList.add('active');
+                
+                // Find and highlight the corresponding nav item
+                const navItem = document.querySelector(`.nav-item[onclick="showContent('${id}')"]`);
+                if (navItem) {
+                    navItem.classList.add('active');
+                }
             }
             
-            // Update active nav item
-            const navItems = document.querySelectorAll('.nav-item, .nav-section-title');
-            navItems.forEach(item => item.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            // Close sidebar on mobile after selection
+            // Close sidebar on mobile
             if (window.innerWidth <= 768) {
-                toggleSidebar();
+                document.getElementById('sidebar').classList.remove('open');
             }
             
             // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo(0, 0);
         }
-
-        // Toggle sidebar on mobile
+        
         function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('sidebarOverlay');
-            sidebar.classList.toggle('open');
-            overlay.classList.toggle('show');
+            document.getElementById('sidebar').classList.toggle('open');
         }
-
-        // Search functionality
+        
         function searchContent(event) {
-            const searchTerm = event.target.value.toLowerCase();
-            const navItems = document.querySelectorAll('.nav-item, .nav-section-title');
-            
-            navItems.forEach(item => {
+            const term = event.target.value.toLowerCase();
+            document.querySelectorAll('.nav-item').forEach(item => {
                 const text = item.textContent.toLowerCase();
-                const parent = item.closest('.nav-section');
-                
-                if (text.includes(searchTerm)) {
-                    item.style.display = 'block';
-                    if (parent && searchTerm) {
-                        parent.classList.add('expanded');
-                    }
-                } else {
-                    if (!item.classList.contains('nav-section-title')) {
-                        item.style.display = 'none';
-                    }
-                }
+                item.style.display = text.includes(term) ? 'block' : 'none';
             });
             
-            // If search is empty, reset all
-            if (!searchTerm) {
-                navItems.forEach(item => {
-                    item.style.display = 'block';
-                });
-            }
-        }
-
-        // Close sidebar when clicking outside on mobile
-        document.addEventListener('click', function(event) {
-            const sidebar = document.getElementById('sidebar');
-            const toggle = document.querySelector('.mobile-toggle');
-            
-            if (window.innerWidth <= 768) {
-                if (!sidebar.contains(event.target) && !toggle.contains(event.target) && sidebar.classList.contains('open')) {
-                    toggleSidebar();
+            // Also search in section titles
+            document.querySelectorAll('.nav-section-title').forEach(title => {
+                const text = title.textContent.toLowerCase();
+                const hasVisibleItems = Array.from(title.parentElement.querySelectorAll('.nav-item'))
+                    .some(item => item.style.display !== 'none');
+                
+                if (text.includes(term) || hasVisibleItems) {
+                    title.parentElement.style.display = 'block';
+                } else {
+                    title.parentElement.style.display = 'none';
                 }
-            }
-        });
-
-        // Handle window resize
-        window.addEventListener('resize', function() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('sidebarOverlay');
-            
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // Expand all sections on desktop
             if (window.innerWidth > 768) {
-                sidebar.classList.remove('open');
-                overlay.classList.remove('show');
-            }
-        });
-
-        // Initialize: Expand first section by default
-        document.addEventListener('DOMContentLoaded', function() {
-            const firstSection = document.querySelector('.nav-section');
-            if (firstSection) {
-                firstSection.classList.add('expanded');
+                document.querySelectorAll('.nav-section').forEach(s => {
+                    if (s.querySelector('.nav-subsection')) {
+                        s.classList.add('expanded');
+                    }
+                });
             }
         });
     </script>
